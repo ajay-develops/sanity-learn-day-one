@@ -1,7 +1,10 @@
 import type {StructureResolver} from 'sanity/structure'
 
-export const structure: StructureResolver = (S) =>
-  S.list()
+export const structure: StructureResolver = (S, context) => {
+  const {currentUser} = context
+  const isAdmin = currentUser?.roles.some((role) => role.name === 'administrator')
+
+  return S.list()
     .id('root')
     .title('Content')
     .items([
@@ -9,7 +12,7 @@ export const structure: StructureResolver = (S) =>
       S.listItem()
         .title('Upcoming')
         .schemaType('event')
-        .child(S.documentList().title('Upcoming Events').filter('date >= now()')),
+        .child(S.documentTypeList('event').title('Upcoming Events').filter('date >= now()')),
       S.listItem()
         .title('Past')
         .schemaType('event')
@@ -17,4 +20,12 @@ export const structure: StructureResolver = (S) =>
       S.divider().title('Artists & Venues'),
       S.documentTypeListItem('artist').title('Artists'),
       S.documentTypeListItem('venue').title('Venues'),
+      isAdmin ? S.divider().title('Locales') : S.divider(),
+      ...S.documentTypeListItems().filter((listItem) => {
+        if (['locale'].includes(listItem.getId()!)) {
+          return isAdmin
+        }
+        return false
+      }),
     ])
+}

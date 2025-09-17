@@ -5,6 +5,10 @@ import {schemaTypes} from './schemaTypes'
 import {structure} from './structure'
 import {defaultDocumentNode} from './structure/defaultDocumentNode'
 import {media} from 'sanity-plugin-media'
+import {documentInternationalization} from '@sanity/document-internationalization'
+import {internationalizedArray} from 'sanity-plugin-internationalized-array'
+import {assist} from '@sanity/assist'
+// import {languageFilter} from '@sanity/language-filter'
 
 export default defineConfig({
   name: 'default',
@@ -14,7 +18,7 @@ export default defineConfig({
   dataset: 'production',
 
   plugins: [
-    structureTool({structure, defaultDocumentNode}),
+    structureTool({defaultDocumentNode, structure}),
     visionTool(),
     media({
       creditLine: {
@@ -27,6 +31,35 @@ export default defineConfig({
       },
       maximumUploadSize: 10000000,
       // number - maximum file size (in bytes) that can be uploaded through the plugin interface
+    }),
+    documentInternationalization({
+      // fetch locales from Content Lake or load from your locale file
+      supportedLanguages: (client) => client.fetch(`*[_type == "locale"]{"id": tag, "title":name}`),
+      // define schema types using document level localization
+      schemaTypes: ['event'],
+    }),
+    internationalizedArray({
+      // Use client to fetch locales or import from local locale file
+      languages: (client) => client.fetch(`*[_type == "locale"]{"id": tag, "title":name}`),
+      // Define field types to localize as-needed
+      fieldTypes: ['string', 'simpleBlockContent'],
+    }),
+    // languageFilter({
+    //   supportedLanguages: (client) => client.fetch(`*[_type == "locale"]{"id": tag, "title":name}`),
+    //   // Select Norwegian (Bokmål) by default
+    //   // defaultLanguages: ['en-US'],
+    //   // Only show language filter for document type `page` (schemaType.name)
+    //   documentTypes: ['artist', 'event'],
+    //   // filterField: (enclosingType, member, selectedLanguageIds) =>
+    //   //   !enclosingType.name.startsWith('locale') || selectedLanguageIds.includes(member.name),
+    // }),
+    assist({
+      translate: {
+        styleguide: 'Maintain the tone',
+        document: {
+          languageField: 'language',
+        },
+      },
     }),
   ],
 

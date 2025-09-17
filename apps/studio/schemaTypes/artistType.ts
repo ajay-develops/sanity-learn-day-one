@@ -16,6 +16,10 @@ export const artistType = defineType({
       type: 'text',
     }),
     defineField({
+      name: 'bio',
+      type: 'internationalizedArraySimpleBlockContent',
+    }),
+    defineField({
       name: 'photo',
       type: 'image',
       options: {hotspot: true},

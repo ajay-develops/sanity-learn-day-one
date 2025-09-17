@@ -18,14 +18,18 @@
     "sanity"
   ],
   "dependencies": {
+    "@sanity/assist": "^5.0.0",
     "@sanity/client": "^7.11.1",
+    "@sanity/document-internationalization": "^4.0.0",
     "@sanity/icons": "^3.7.4",
+    "@sanity/language-filter": "^4.0.5",
     "@sanity/ui": "^2.16.14",
     "@sanity/vision": "^4.9.0",
     "react": "^19.1",
     "react-dom": "^19.1",
     "sanity": "^4.9.0",
     "sanity-plugin-documents-pane": "^3.0.0",
+    "sanity-plugin-internationalized-array": "^3.1.5",
     "sanity-plugin-media": "^4.0.0",
     "styled-components": "^6.1.18"
   },
