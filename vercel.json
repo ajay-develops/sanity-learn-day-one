@@ -1,0 +1,48 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "apps/web/package.json",
+      "use": "@vercel/next",
+      "config": {
+        "distDir": ".next"
+      }
+    },
+    {
+      "src": "apps/studio/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    },
+    {
+      "src": "apps/tickets/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/studio/(.*)",
+      "dest": "/apps/studio/$1"
+    },
+    {
+      "src": "/studio",
+      "dest": "/apps/studio/index.html"
+    },
+    {
+      "src": "/tickets/(.*)",
+      "dest": "/apps/tickets/$1"
+    },
+    {
+      "src": "/tickets",
+      "dest": "/apps/tickets/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/apps/web/$1"
+    }
+  ]
+}
