@@ -5,7 +5,7 @@ import { client } from "./client";
 const builder = imageUrlBuilder(client);
 
 export function urlFor(source: SanityImageSource) {
-  if (!source || !source.asset) {
+  if (!source || (typeof source === 'object' && !source.asset)) {
     throw new Error("Invalid image source: missing asset");
   }
   return builder.image(source);
