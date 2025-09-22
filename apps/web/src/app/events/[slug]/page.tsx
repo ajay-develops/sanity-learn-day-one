@@ -46,7 +46,7 @@ export default async function EventPage({
     new Date(date).getTime() - doorsOpen * 60000
   ).toLocaleTimeString();
 
-  const imageUrl = headline?.photo
+  const imageUrl = headline?.photo?.asset
     ? urlFor(headline.photo)
         .height(310)
         .width(550)
