@@ -10,6 +10,7 @@
     "build:studio": "pnpm --filter=studio build",
     "build:tickets": "pnpm --filter=tickets build",
     "deploy:studio": "pnpm --filter=studio deploy",
+    "deploy:web": "vercel --prod --cwd apps/web --name day-one-web",
     "deploy:all": "pnpm build && pnpm deploy:studio"
   },
   "engines": {
