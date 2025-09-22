@@ -16,6 +16,8 @@ export default defineConfig({
 
   projectId: 'sinxko79',
   dataset: 'production',
+  
+  basePath: '/studio',
 
   plugins: [
     structureTool({defaultDocumentNode, structure}),

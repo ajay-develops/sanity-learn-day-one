@@ -5,10 +5,15 @@
   "description": "Day One Content Operations",
   "scripts": {
     "dev": "pnpm run --parallel dev",
-    "build": "pnpm run --parallel build"
+    "build": "pnpm run --parallel build",
+    "build:web": "pnpm --filter=web build",
+    "build:studio": "pnpm --filter=studio build",
+    "build:tickets": "pnpm --filter=tickets build",
+    "deploy:studio": "pnpm --filter=studio deploy",
+    "deploy:all": "pnpm build && pnpm deploy:studio"
   },
   "engines": {
     "node": ">=20.0.0",
-    "pnpm": ">=10.0.0"
+    "pnpm": ">=9.0.0"
   }
 }
