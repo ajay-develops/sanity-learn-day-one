@@ -8,6 +8,7 @@
     "dev": "sanity dev",
     "start": "sanity start",
     "build": "sanity build",
+    "predeploy": "pnpm run typegen --enforce-required-fields",
     "deploy": "sanity deploy",
     "deploy-graphql": "sanity graphql deploy",
     "predev": "pnpm run typegen --enforce-required-fields",
