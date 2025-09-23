@@ -70,6 +70,7 @@ export const eventType = defineType({
         list: ['in-person', 'virtual'],
         layout: 'radio',
       },
+      hidden: true,
       deprecated: {
         reason: 'Use the "Event format" field instead.',
       },
@@ -80,6 +81,7 @@ export const eventType = defineType({
       name: 'format',
       title: 'Event Format',
       type: 'string',
+      validation: (rule) => rule.required().error('Required'),
       options: {
         list: ['in-person', 'virtual'],
         layout: 'radio',
