@@ -60,21 +60,17 @@ export type SanityAssistInstructionTask = {
 
 export type SanityAssistTaskStatus = {
   _type: "sanity.assist.task.status";
-  tasks?: Array<
-    {
-      _key: string;
-    } & SanityAssistInstructionTask
-  >;
+  tasks?: Array<{
+    _key: string;
+  } & SanityAssistInstructionTask>;
 };
 
 export type SanityAssistSchemaTypeAnnotations = {
   _type: "sanity.assist.schemaType.annotations";
   title?: string;
-  fields?: Array<
-    {
-      _key: string;
-    } & SanityAssistSchemaTypeField
-  >;
+  fields?: Array<{
+    _key: string;
+  } & SanityAssistSchemaTypeField>;
 };
 
 export type SanityAssistOutputType = {
@@ -127,23 +123,18 @@ export type SanityAssistInstructionUserInput = {
 };
 
 export type SanityAssistInstructionPrompt = Array<{
-  children?: Array<
-    | {
-        marks?: Array<string>;
-        text?: string;
-        _type: "span";
-        _key: string;
-      }
-    | ({
-        _key: string;
-      } & SanityAssistInstructionFieldRef)
-    | ({
-        _key: string;
-      } & SanityAssistInstructionContext)
-    | ({
-        _key: string;
-      } & SanityAssistInstructionUserInput)
-  >;
+  children?: Array<{
+    marks?: Array<string>;
+    text?: string;
+    _type: "span";
+    _key: string;
+  } | {
+    _key: string;
+  } & SanityAssistInstructionFieldRef | {
+    _key: string;
+  } & SanityAssistInstructionContext | {
+    _key: string;
+  } & SanityAssistInstructionUserInput>;
   style?: "normal";
   listItem?: never;
   markDefs?: null;
@@ -164,24 +155,19 @@ export type SanityAssistInstruction = {
   title?: string;
   userId?: string;
   createdById?: string;
-  output?: Array<
-    | ({
-        _key: string;
-      } & SanityAssistOutputField)
-    | ({
-        _key: string;
-      } & SanityAssistOutputType)
-  >;
+  output?: Array<{
+    _key: string;
+  } & SanityAssistOutputField | {
+    _key: string;
+  } & SanityAssistOutputType>;
 };
 
 export type SanityAssistSchemaTypeField = {
   _type: "sanity.assist.schemaType.field";
   path?: string;
-  instructions?: Array<
-    {
-      _key: string;
-    } & SanityAssistInstruction
-  >;
+  instructions?: Array<{
+    _key: string;
+  } & SanityAssistInstruction>;
 };
 
 export type InternationalizedArraySimpleBlockContentValue = {
@@ -194,17 +180,13 @@ export type InternationalizedArrayStringValue = {
   value?: string;
 };
 
-export type InternationalizedArraySimpleBlockContent = Array<
-  {
-    _key: string;
-  } & InternationalizedArraySimpleBlockContentValue
->;
+export type InternationalizedArraySimpleBlockContent = Array<{
+  _key: string;
+} & InternationalizedArraySimpleBlockContentValue>;
 
-export type InternationalizedArrayString = Array<
-  {
-    _key: string;
-  } & InternationalizedArrayStringValue
->;
+export type InternationalizedArrayString = Array<{
+  _key: string;
+} & InternationalizedArrayStringValue>;
 
 export type TranslationMetadata = {
   _id: string;
@@ -212,11 +194,9 @@ export type TranslationMetadata = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  translations?: Array<
-    {
-      _key: string;
-    } & InternationalizedArrayReferenceValue
-  >;
+  translations?: Array<{
+    _key: string;
+  } & InternationalizedArrayReferenceValue>;
   schemaTypes?: Array<string>;
 };
 
@@ -323,11 +303,9 @@ export type Venue = {
   country?: string;
 };
 
-export type InternationalizedArrayReference = Array<
-  {
-    _key: string;
-  } & InternationalizedArrayReferenceValue
->;
+export type InternationalizedArrayReference = Array<{
+  _key: string;
+} & InternationalizedArrayReferenceValue>;
 
 export type MediaTag = {
   _id: string;
@@ -456,43 +434,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes =
-  | SimpleBlockContent
-  | Locale
-  | SanityAssistInstructionTask
-  | SanityAssistTaskStatus
-  | SanityAssistSchemaTypeAnnotations
-  | SanityAssistOutputType
-  | SanityAssistOutputField
-  | SanityAssistInstructionContext
-  | AssistInstructionContext
-  | SanityAssistInstructionUserInput
-  | SanityAssistInstructionPrompt
-  | SanityAssistInstructionFieldRef
-  | SanityAssistInstruction
-  | SanityAssistSchemaTypeField
-  | InternationalizedArraySimpleBlockContentValue
-  | InternationalizedArrayStringValue
-  | InternationalizedArraySimpleBlockContent
-  | InternationalizedArrayString
-  | TranslationMetadata
-  | InternationalizedArrayReferenceValue
-  | Event
-  | Artist
-  | Venue
-  | InternationalizedArrayReference
-  | MediaTag
-  | SanityImagePaletteSwatch
-  | SanityImagePalette
-  | SanityImageDimensions
-  | SanityImageHotspot
-  | SanityImageCrop
-  | SanityFileAsset
-  | SanityImageAsset
-  | SanityImageMetadata
-  | Geopoint
-  | Slug
-  | SanityAssetSourceData;
+export type AllSanitySchemaTypes = SimpleBlockContent | Locale | SanityAssistInstructionTask | SanityAssistTaskStatus | SanityAssistSchemaTypeAnnotations | SanityAssistOutputType | SanityAssistOutputField | SanityAssistInstructionContext | AssistInstructionContext | SanityAssistInstructionUserInput | SanityAssistInstructionPrompt | SanityAssistInstructionFieldRef | SanityAssistInstruction | SanityAssistSchemaTypeField | InternationalizedArraySimpleBlockContentValue | InternationalizedArrayStringValue | InternationalizedArraySimpleBlockContent | InternationalizedArrayString | TranslationMetadata | InternationalizedArrayReferenceValue | Event | Artist | Venue | InternationalizedArrayReference | MediaTag | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ../web/src/app/events/[slug]/page.tsx
 // Variable: EVENT_QUERY
@@ -590,7 +532,7 @@ export type EVENTS_QUERYResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[\n    _type == "event" &&\n    slug.current == $slug\n  ][0]{\n  ...,\n  "date": coalesce(date, now()),\n  "doorsOpen": coalesce(doorsOpen, 0),\n  headline->,\n  venue->\n}': EVENT_QUERYResult;
-    '*[\n  _type == "event"\n  && defined(slug.current)\n  && date > now()\n]|order(date asc){_id, name, slug, date}': EVENTS_QUERYResult;
+    "*[\n    _type == \"event\" &&\n    slug.current == $slug\n  ][0]{\n  ...,\n  \"date\": coalesce(date, now()),\n  \"doorsOpen\": coalesce(doorsOpen, 0),\n  headline->,\n  venue->\n}": EVENT_QUERYResult;
+    "*[\n  _type == \"event\"\n  && defined(slug.current)\n  && date > now()\n]|order(date asc){_id, name, slug, date}": EVENTS_QUERYResult;
   }
 }
